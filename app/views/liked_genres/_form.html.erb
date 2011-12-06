@@ -1,0 +1,25 @@
+<%= form_for(@liked_genre) do |f| %>
+  <% if @liked_genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@liked_genre.errors.count, "error") %> prohibited this liked_genre from being saved:</h2>
+
+      <ul>
+      <% @liked_genre.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :genre %><br />
+    <%= f.text_field :genre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

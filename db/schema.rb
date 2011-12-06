@@ -11,13 +11,58 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206001645) do
+ActiveRecord::Schema.define(:version => 20111206163946) do
+
+  create_table "artists", :force => true do |t|
+    t.string   "name",                      :null => false
+    t.string   "genre",                     :null => false
+    t.string   "image"
+    t.integer  "rating",     :default => 5, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "concerts", :force => true do |t|
+    t.integer  "venue_id"
+    t.integer  "artist_id"
+    t.string   "start_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "liked_genres", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "genre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recommendations", :force => true do |t|
+    t.integer  "concert_id"
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.string   "explanation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username",   :default => "", :null => false
     t.string   "password",                   :null => false
-    t.string   "name",       :default => "", :null => false
-    t.string   "email",      :default => "", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users_artist_ratings", :force => true do |t|
+    t.integer  "artist_id"
+    t.integer  "rating_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

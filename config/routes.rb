@@ -1,5 +1,17 @@
 CSC554::Application.routes.draw do
 
+  resources :recommendations
+
+  resources :liked_genres
+
+  resources :users_artist_ratings
+
+  resources :concerts
+
+  resources :venues
+
+  resources :artists
+
   resources :users
   resources :sessions , :only => [:login , :create, :logout]
 

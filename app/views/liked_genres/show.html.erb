@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @liked_genre.user_id %>
+</p>
+
+<p>
+  <b>Genre:</b>
+  <%= @liked_genre.genre %>
+</p>
+
+
+<%= link_to 'Edit', edit_liked_genre_path(@liked_genre) %> |
+<%= link_to 'Back', liked_genres_path %>

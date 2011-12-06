@@ -1,0 +1,25 @@
+<h1>Listing liked_genres</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Genre</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @liked_genres.each do |liked_genre| %>
+  <tr>
+    <td><%= liked_genre.user_id %></td>
+    <td><%= liked_genre.genre %></td>
+    <td><%= link_to 'Show', liked_genre %></td>
+    <td><%= link_to 'Edit', edit_liked_genre_path(liked_genre) %></td>
+    <td><%= link_to 'Destroy', liked_genre, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Liked genre', new_liked_genre_path %>
