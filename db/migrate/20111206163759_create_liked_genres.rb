@@ -7,4 +7,8 @@ class CreateLikedGenres < ActiveRecord::Migration
       t.timestamps
     end
   end
+
+  def self.down
+    drop_table :liked_genres
+  end
 end

@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>Artist</th>
+    <th>User</th>
     <th>Rating</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -12,7 +12,8 @@
 <% @users_artist_ratings.each do |users_artist_rating| %>
   <tr>
     <td><%= users_artist_rating.artist_id %></td>
-    <td><%= users_artist_rating.rating_id %></td>
+    <td><%= users_artist_rating.user_id %></td>
+    <td><%= users_artist_rating.rating %></td>
     <td><%= link_to 'Show', users_artist_rating %></td>
     <td><%= link_to 'Edit', edit_users_artist_rating_path(users_artist_rating) %></td>
     <td><%= link_to 'Destroy', users_artist_rating, confirm: 'Are you sure?', method: :delete %></td>

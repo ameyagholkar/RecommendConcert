@@ -9,4 +9,8 @@ class CreateRecommendations < ActiveRecord::Migration
       t.timestamps
     end
   end
+
+  def self.down
+    drop_table :recommendations
+  end
 end

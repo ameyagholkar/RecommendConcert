@@ -6,10 +6,13 @@
 </p>
 
 <p>
-  <b>Rating:</b>
+  <b>User:</b>
   <%= @users_artist_rating.rating_id %>
 </p>
-
+<p>
+  <b>Rating:</b>
+  <%= @users_artist_rating.rating %>
+</p>
 
 <%= link_to 'Edit', edit_users_artist_rating_path(@users_artist_rating) %> |
 <%= link_to 'Back', users_artist_ratings_path %>
