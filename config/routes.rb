@@ -1,4 +1,13 @@
 CSC554::Application.routes.draw do
+
+  resources :users
+  resources :sessions , :only => [:login , :create, :logout]
+
+
+  match '/login'  => 'sessions#login'
+  match '/logout' => 'sessions#logout'
+  match '/signup' => 'users#new'
+  match '/ConcertRecommendation' => 'users#index'        #This should point to Home Page
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +57,7 @@ CSC554::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 
