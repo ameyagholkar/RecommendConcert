@@ -3,6 +3,11 @@
     Answer the following questions:
 
     <%= form_tag("/recommendations", :method => "get") do %>
+        <%= hidden_field_tag(:artist0, @artists[0].name) %>
+        <%= hidden_field_tag(:artist1, @artists[1].name) %>
+        <%= hidden_field_tag(:artist2, @artists[2].name) %>
+        <%= hidden_field_tag(:artist3, @artists[3].name) %>
+        <%= hidden_field_tag(:artist4, @artists[4].name) %>
         <div>1. Which of the following genres of music do you like?  Check all that apply. </div>
         <div><%= check_box_tag(:rock) %>
             <%= label_tag(:rock, "Rock") %>
@@ -13,6 +18,7 @@
             <%= check_box_tag(:country) %>
             <%= label_tag(:country, "Country") %>
         </div>
+
 
     <div>2. Rate the following artists on a scale of 1-10, 10 being best and 1 being worst. </div>
         <div><%= @artists[0].name %> </div>

@@ -3,9 +3,12 @@ class RecommendationsController < ApplicationController
   # GET /recommendations.json
   def index
     @user_id = session[:id]
+    @artists = params[:artists]
 
     #check for information that may have come from the survey
     #if it's there, add the info to the database before listing recommendations
+
+    #check the genres liked
     if params[:rock] == "1"
       #user likes rock genre
       g = LikedGenre.new
@@ -35,7 +38,55 @@ class RecommendationsController < ApplicationController
       g.save
     end
 
-    @recommendations = Recommendation.all
+    #check the artist ratings
+    if params[:artist0]
+      if params[:artist0_rating]
+        uar = UsersArtistRating.new
+        uar.user_id = @user_id
+        uar.artist_id = Artist.find_by_name(params[:artist0]).id
+        uar.rating = params[:artist0_rating]
+        uar.save
+      end
+    end
+     if params[:artist1]
+      if params[:artist1_rating]
+        uar = UsersArtistRating.new
+        uar.user_id = @user_id
+        uar.artist_id = Artist.find_by_name(params[:artist1]).id
+        uar.rating = params[:artist1_rating]
+        uar.save
+      end
+     end
+     if params[:artist2]
+      if params[:artist2_rating]
+        uar = UsersArtistRating.new
+        uar.user_id = @user_id
+        uar.artist_id = Artist.find_by_name(params[:artist2]).id
+        uar.rating = params[:artist2_rating]
+        uar.save
+      end
+     end
+    if params[:artist3]
+      if params[:artist3_rating]
+        uar = UsersArtistRating.new
+        uar.user_id = @user_id
+
+        uar.artist_id = Artist.find_by_name(params[:artist3]).id
+        uar.rating = params[:artist3_rating]
+        uar.save
+      end
+    end
+    if params[:artist4]
+      if params[:artist4_rating]
+        uar = UsersArtistRating.new
+        uar.user_id = @user_id
+        uar.artist_id = Artist.find_by_name(params[:artist4]).id
+        uar.rating = params[:artist4_rating]
+        uar.save
+      end
+    end
+
+    @recommendations = Recommendation.find_all_by_user_id(@user_id)
 
     respond_to do |format|
       format.html # index.html.erb
