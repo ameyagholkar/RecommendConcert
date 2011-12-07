@@ -86,7 +86,75 @@ class RecommendationsController < ApplicationController
       end
     end
 
+    #time to fill in the users recommendations
+    #remove any preexisting recommendations for the user to put in new ones
     @recommendations = Recommendation.find_all_by_user_id(@user_id)
+    if !@recommendations.nil?
+      for r in @recommendations
+         r.destroy
+      end
+    end
+
+    @concerts = Concert.all
+
+    #iterate through the concerts and create recommendation entries for each of them
+    for concert in @concerts
+      concert_artist = Artist.find(concert.artist_id)
+      rating1 = concert_artist.rating
+
+      #find if the artist was rated by the user
+      user_rating = UsersArtistRating.first( :conditions => ["artist_id = ? and user_id = ?", concert.artist_id, @user_id])
+      rating2 = 0
+      if user_rating
+        if user_rating.rating > 5
+          rating2 = (user_rating.rating - 5) * 5
+        else
+          rating2 = user_rating.rating * -5
+        end
+      end
+
+      if LikedGenre.first(:conditions => ["genre = ? and user_id = ?", concert_artist.genre, @user_id])
+        #user likes the genre
+        rating3 = 9
+      else
+        rating3 = 0
+      end
+
+      overall_rating = rating1+rating2+rating3
+
+      if overall_rating > 25
+        explanation = "You most definitely will like this concert because "
+      elsif overall_rating > 18
+        explanation = "You should like this concert because "
+      else
+        explanation = "You might like this concert because "
+      end
+
+      if rating1 > rating2
+        if rating1 > rating3
+          #default rating was the best explanation
+          explanation = explanation + "other people like " + concert_artist.name + "."
+        else
+          #the genre was the best explanation
+          explanation = explanation + "you like " + concert_artist.genre + " music."
+        end
+      elsif rating2 > rating3
+        #the user's artist rating is the best explanation
+          explanation = explanation + "you like " + concert_artist.name + "."
+      else
+        #the genre was the best explanation
+        explanation = explanation + "you like " + concert_artist.genre + " music."
+      end
+
+      r = Recommendation.new
+      r.concert_id = concert.id
+      r.user_id = @user_id
+      r.rating = overall_rating
+      r.explanation = explanation
+      r.save
+    end
+
+    @recommendations = Recommendation.all( :order => "rating DESC", :limit => 5, :conditions => ["user_id = ?",@user_id])
 
     respond_to do |format|
       format.html # index.html.erb
