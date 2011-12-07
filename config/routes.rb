@@ -13,6 +13,7 @@ CSC554::Application.routes.draw do
   resources :artists
 
   resources :users
+  resources :survey
   resources :sessions , :only => [:login , :create, :logout]
 
 

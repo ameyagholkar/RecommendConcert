@@ -1,0 +1,126 @@
+<% if session[:id] %>
+    <h1>Survey</h1>
+    Answer the following questions:
+
+    <%= form_tag("/", :method => "get") do %>
+        <div>1. Which of the following genres of music do you like?  Check all that apply. </div>
+        <div><%= check_box_tag(:rock) %>
+            <%= label_tag(:rock, "Rock") %>
+            <%= check_box_tag(:pop) %>
+            <%= label_tag(:pop, "Pop" ) %>
+            <%= check_box_tag(:rap) %>
+            <%= label_tag(:rap, "Rap") %>
+            <%= check_box_tag(:country) %>
+            <%= label_tag(:country, "Country") %>
+        </div>
+
+    <div>2. Rate the following artists on a scale of 1-10, 10 being best and 1 being worst. </div>
+        <div><%= @artists[0].name %> </div>
+            <%= radio_button_tag(:artist0_rating, 1) %>
+            <%= label_tag(:artist0_1, "1") %>
+            <%= radio_button_tag(:artist0_rating, 2) %>
+            <%= label_tag(:artist0_2, "2") %>
+            <%= radio_button_tag(:artist0_rating, 3) %>
+            <%= label_tag(:artist0_3, "3") %>
+            <%= radio_button_tag(:artist0_rating, 4) %>
+            <%= label_tag(:artist0_4, "4") %>
+            <%= radio_button_tag(:artist0_rating, 5) %>
+            <%= label_tag(:artist0_5, "5") %>
+            <%= radio_button_tag(:artist0_rating, 6) %>
+            <%= label_tag(:artist0_6, "6") %>
+            <%= radio_button_tag(:artist0_rating, 7) %>
+            <%= label_tag(:artist0_7, "7") %>
+            <%= radio_button_tag(:artist0_rating, 8) %>
+            <%= label_tag(:artist0_8, "8") %>
+            <%= radio_button_tag(:artist0_rating, 9) %>
+            <%= label_tag(:artist0_9, "9") %>
+            <%= radio_button_tag(:artist0_rating, 10) %>
+            <%= label_tag(:artist0_10, "10") %>
+        <div><%= @artists[1].name %> </div>
+            <%= radio_button_tag(:artist1_rating, 1) %>
+            <%= label_tag(:artist1_1, "1") %>
+            <%= radio_button_tag(:artist1_rating, 2) %>
+            <%= label_tag(:artist1_2, "2") %>
+            <%= radio_button_tag(:artist1_rating, 3) %>
+            <%= label_tag(:artist1_3, "3") %>
+            <%= radio_button_tag(:artist1_rating, 4) %>
+            <%= label_tag(:artist1_4, "4") %>
+            <%= radio_button_tag(:artist1_rating, 5) %>
+            <%= label_tag(:artist1_5, "5") %>
+            <%= radio_button_tag(:artist1_rating, 6) %>
+            <%= label_tag(:artist1_6, "6") %>
+            <%= radio_button_tag(:artist1_rating, 7) %>
+            <%= label_tag(:artist1_7, "7") %>
+            <%= radio_button_tag(:artist1_rating, 8) %>
+            <%= label_tag(:artist1_8, "8") %>
+            <%= radio_button_tag(:artist1_rating, 9) %>
+            <%= label_tag(:artist1_9, "9") %>
+            <%= radio_button_tag(:artist1_rating, 10) %>
+            <%= label_tag(:artist1_10, "10") %>
+        <div><%= @artists[2].name %> </div>
+            <%= radio_button_tag(:artist2_rating, 1) %>
+            <%= label_tag(:artist2_1, "1") %>
+            <%= radio_button_tag(:artist2_rating, 2) %>
+            <%= label_tag(:artist2_2, "2") %>
+            <%= radio_button_tag(:artist2_rating, 3) %>
+            <%= label_tag(:artist2_3, "3") %>
+            <%= radio_button_tag(:artist2_rating, 4) %>
+            <%= label_tag(:artist2_4, "4") %>
+            <%= radio_button_tag(:artist2_rating, 5) %>
+            <%= label_tag(:artist2_5, "5") %>
+            <%= radio_button_tag(:artist2_rating, 6) %>
+            <%= label_tag(:artist2_6, "6") %>
+            <%= radio_button_tag(:artist2_rating, 7) %>
+            <%= label_tag(:artist2_7, "7") %>
+            <%= radio_button_tag(:artist2_rating, 8) %>
+            <%= label_tag(:artist2_8, "8") %>
+            <%= radio_button_tag(:artist2_rating, 9) %>
+            <%= label_tag(:artist2_9, "9") %>
+            <%= radio_button_tag(:artist2_rating, 10) %>
+            <%= label_tag(:artist2_10, "10") %>
+        <div><%= @artists[3].name %> </div>
+            <%= radio_button_tag(:artist3_rating, 1) %>
+            <%= label_tag(:artist3_1, "1") %>
+            <%= radio_button_tag(:artist3_rating, 2) %>
+            <%= label_tag(:artist3_2, "2") %>
+            <%= radio_button_tag(:artist3_rating, 3) %>
+            <%= label_tag(:artist3_3, "3") %>
+            <%= radio_button_tag(:artist3_rating, 4) %>
+            <%= label_tag(:artist3_4, "4") %>
+            <%= radio_button_tag(:artist3_rating, 5) %>
+            <%= label_tag(:artist3_5, "5") %>
+            <%= radio_button_tag(:artist3_rating, 6) %>
+            <%= label_tag(:artist3_6, "6") %>
+            <%= radio_button_tag(:artist3_rating, 7) %>
+            <%= label_tag(:artist3_7, "7") %>
+            <%= radio_button_tag(:artist3_rating, 8) %>
+            <%= label_tag(:artist3_8, "8") %>
+            <%= radio_button_tag(:artist3_rating, 9) %>
+            <%= label_tag(:artist3_9, "9") %>
+            <%= radio_button_tag(:artist3_rating, 10) %>
+            <%= label_tag(:artist3_10, "10") %>
+        <div><%= @artists[4].name %> </div>
+            <%= radio_button_tag(:artist4_rating, 1) %>
+            <%= label_tag(:artist4_1, "1") %>
+            <%= radio_button_tag(:artist4_rating, 2) %>
+            <%= label_tag(:artist4_2, "2") %>
+            <%= radio_button_tag(:artist4_rating, 3) %>
+            <%= label_tag(:artist4_3, "3") %>
+            <%= radio_button_tag(:artist4_rating, 4) %>
+            <%= label_tag(:artist4_4, "4") %>
+            <%= radio_button_tag(:artist4_rating, 5) %>
+            <%= label_tag(:artist4_5, "5") %>
+            <%= radio_button_tag(:artist4_rating, 6) %>
+            <%= label_tag(:artist4_6, "6") %>
+            <%= radio_button_tag(:artist4_rating, 7) %>
+            <%= label_tag(:artist4_7, "7") %>
+            <%= radio_button_tag(:artist4_rating, 8) %>
+            <%= label_tag(:artist4_8, "8") %>
+            <%= radio_button_tag(:artist4_rating, 9) %>
+            <%= label_tag(:artist4_9, "9") %>
+            <%= radio_button_tag(:artist4_rating, 10) %>
+            <%= label_tag(:artist4_10, "10") %>
+        <div><%= submit_tag("Submit") %></div>
+    <% end %>
+
+<% end %>
