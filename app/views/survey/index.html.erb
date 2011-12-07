@@ -2,7 +2,7 @@
     <h1>Survey</h1>
     Answer the following questions:
 
-    <%= form_tag("/", :method => "get") do %>
+    <%= form_tag("/recommendations", :method => "get") do %>
         <div>1. Which of the following genres of music do you like?  Check all that apply. </div>
         <div><%= check_box_tag(:rock) %>
             <%= label_tag(:rock, "Rock") %>

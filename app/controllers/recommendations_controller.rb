@@ -2,6 +2,39 @@ class RecommendationsController < ApplicationController
   # GET /recommendations
   # GET /recommendations.json
   def index
+    @user_id = session[:id]
+
+    #check for information that may have come from the survey
+    #if it's there, add the info to the database before listing recommendations
+    if params[:rock] == "1"
+      #user likes rock genre
+      g = LikedGenre.new
+      g.user_id = @user_id
+      g.genre = "Rock"
+      g.save
+    end
+    if params[:pop] == "1"
+      #user likes pop genre
+      g = LikedGenre.new
+      g.user_id = @user_id
+      g.genre = "Pop"
+      g.save
+    end
+    if params[:rap] == "1"
+      #user likes rap genre
+      g = LikedGenre.new
+      g.user_id = @user_id
+      g.genre = "Rap"
+      g.save
+    end
+    if params[:country] == "1"
+      #user likes country genre
+      g = LikedGenre.new
+      g.user_id = @user_id
+      g.genre = "Country"
+      g.save
+    end
+
     @recommendations = Recommendation.all
 
     respond_to do |format|
