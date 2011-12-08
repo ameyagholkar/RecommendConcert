@@ -2,15 +2,15 @@ CSC554::Application.routes.draw do
 
   resources :recommendations
 
-  resources :liked_genres
+  #resources :liked_genres
 
-  resources :users_artist_ratings
+  #resources :users_artist_ratings
 
-  resources :concerts
+  #resources :concerts
 
-  resources :venues
+  #resources :venues
 
-  resources :artists
+  #resources :artists
 
   resources :users
   resources :survey
@@ -71,7 +71,7 @@ CSC554::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'users#index'
+   root :to => 'survey#index'
 
   # See how all your routes lay out with "rake routes"
 
