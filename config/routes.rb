@@ -21,6 +21,7 @@ CSC554::Application.routes.draw do
   match '/logout' => 'sessions#logout'
   match '/signup' => 'users#new'
   match '/ConcertRecommendation' => 'users#index'        #This should point to Home Page
+  match '/survey' => 'survey#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

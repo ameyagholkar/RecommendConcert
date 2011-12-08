@@ -1,29 +1,59 @@
-<h1>Listing recommendations</h1>
+<h1>Recommendations for <%= display_username(session[:id]) %></h1>
 
-<table>
-  <tr>
-    <th>Concert</th>
-    <th>User</th>
-    <th>Rating</th>
-    <th>Explanation</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<table cellspacing="50">
+<% i = 1 %>
 <% @recommendations.each do |recommendation| %>
   <tr>
-    <td><%= recommendation.concert_id %></td>
-    <td><%= recommendation.user_id %></td>
-    <td><%= recommendation.rating %></td>
+    <td><%= i %>.</td>
+    <% @concert = get_concert(recommendation.concert_id) %>
+    <td><table>
+      <tr><td><%= (Artist.find(@concert.artist_id)).name %> Live in Concert</td></tr>
+      <tr><td>
+        <table>
+          <tr><td>Venue:</td><td><%= (Venue.find(@concert.venue_id)).name %></td></tr>
+          <tr><td></td><td><%= (Venue.find(@concert.venue_id)).address %></td></tr>
+        </table>
+      </td></tr>
+      <tr><td>Time: <%= (@concert.start_time) %></td></tr>
+      <tr><td>Price Range: <%= @concert.min_price %>$ through <%= @concert.max_price %>$</td></tr>
+      <tr><td><%= (Artist.find(@concert.artist_id)).name %>'s Rating:
+        <% (1..(Artist.find(@concert.artist_id)).rating).each do  %>
+              <%= image_tag('/images/smallstar.gif') %>
+        <% end %>
+        <% (1..(10-(Artist.find(@concert.artist_id)).rating)).each do  %>
+              <%= image_tag('/images/blankstar.jpg') %>
+        <% end %>
+        &nbsp;&nbsp;<%= (Artist.find(@concert.artist_id)).rating %>/10</td></tr>
+    </table></td>
+    <td>
+      <% if recommendation.rating > 30 %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/stars.gif") %>
+      <% elsif recommendation.rating > 20 and recommendation.rating < 30 %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/blankbigstar.jpg") %>
+      <% elsif recommendation.rating > 10 and recommendation.rating < 20 %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/blankbigstar.jpg") %>
+          <%=  image_tag("/images/blankbigstar.jpg") %>
+      <% else %>
+          <%=  image_tag("/images/stars.gif") %>
+          <%=  image_tag("/images/blankbigstar.jpg") %>
+          <%=  image_tag("/images/blankbigstar.jpg") %>
+          <%=  image_tag("/images/blankbigstar.jpg") %>
+      <%  end %>
+
+    </td>
     <td><%= recommendation.explanation %></td>
-    <td><%= link_to 'Show', recommendation %></td>
-    <td><%= link_to 'Edit', edit_recommendation_path(recommendation) %></td>
-    <td><%= link_to 'Destroy', recommendation, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
+  <% i=i+1 %>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Recommendation', new_recommendation_path %>
