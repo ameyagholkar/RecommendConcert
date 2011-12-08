@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def login
-    @title = "Login to Concert Recommendation"
+    @title = "Login"
   end
 
   def create

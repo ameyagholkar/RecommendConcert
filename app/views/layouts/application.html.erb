@@ -7,7 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<table>
+  <tr>
+    <td>
+      <% if session[:id] %>
+        Welcome <%= User.find(session[:id]).username %>!   </td>
+        <td><%= link_to "Logout", logout_path %></td>
+      <% else %>
+        <%= link_to "Login", login_path %>  |   New User? <%= link_to 'Sign Up', new_user_path %>     </td>
+      <% end %>
+  </tr>
+</table>
+<hr>
+ <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+          <hr>
+ <% end %>
+<h1>Concert Recommendation System</h1>
 <%= yield %>
 
 </body>
