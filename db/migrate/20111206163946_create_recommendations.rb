@@ -1,5 +1,5 @@
 class CreateRecommendations < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :recommendations do |t|
       t.integer :concert_id
       t.integer :user_id

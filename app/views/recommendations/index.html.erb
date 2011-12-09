@@ -15,7 +15,7 @@
         </table>
       </td></tr>
       <tr><td>Time: <%= (@concert.start_time) %></td></tr>
-      <tr><td>Price Range: <%= @concert.min_price %>$ through <%= @concert.max_price %>$</td></tr>
+      <tr><td>Price Range: $<%= @concert.min_price %> - $<%= @concert.max_price %></td></tr>
       <tr><td><%= (Artist.find(@concert.artist_id)).name %>'s Rating:
         <% (1..(Artist.find(@concert.artist_id)).rating).each do  %>
               <%= image_tag('/images/smallstar.gif') %>

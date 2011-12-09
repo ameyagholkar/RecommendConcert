@@ -1,0 +1,2 @@
+module SimilarArtistsHelper
+end

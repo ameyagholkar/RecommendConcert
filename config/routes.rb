@@ -1,5 +1,7 @@
 CSC554::Application.routes.draw do
 
+  #resources :similar_artists
+
   resources :recommendations
 
   #resources :liked_genres

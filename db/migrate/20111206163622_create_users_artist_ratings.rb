@@ -1,5 +1,5 @@
 class CreateUsersArtistRatings < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :users_artist_ratings do |t|
       t.integer :artist_id
       t.integer :user_id

@@ -1,5 +1,5 @@
 class CreateConcerts < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :concerts do |t|
       t.integer :venue_id
       t.integer :artist_id

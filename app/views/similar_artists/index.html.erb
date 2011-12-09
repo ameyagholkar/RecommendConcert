@@ -1,0 +1,25 @@
+<h1>Listing similar_artists</h1>
+
+<table>
+  <tr>
+    <th>Artist1</th>
+    <th>Artist2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @similar_artists.each do |similar_artist| %>
+  <tr>
+    <td><%= similar_artist.artist1_id %></td>
+    <td><%= similar_artist.artist2_id %></td>
+    <td><%= link_to 'Show', similar_artist %></td>
+    <td><%= link_to 'Edit', edit_similar_artist_path(similar_artist) %></td>
+    <td><%= link_to 'Destroy', similar_artist, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Similar artist', new_similar_artist_path %>

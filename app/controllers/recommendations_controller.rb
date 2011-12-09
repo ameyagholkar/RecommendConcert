@@ -101,6 +101,7 @@ class RecommendationsController < ApplicationController
     for concert in @concerts
       concert_artist = Artist.find(concert.artist_id)
       rating1 = concert_artist.rating
+      best_similar_artist = 0
 
       #find if the artist was rated by the user
       user_rating = UsersArtistRating.first( :conditions => ["artist_id = ? and user_id = ?", concert.artist_id, @user_id])
@@ -110,6 +111,44 @@ class RecommendationsController < ApplicationController
           rating2 = (user_rating.rating - 5) * 5
         else
           rating2 = user_rating.rating * -5
+        end
+      else
+        #check for similar artists
+        sim_artists = SimilarArtist.find_all_by_artist1_id(concert.artist_id)
+        for sim_artist in sim_artists
+           sim_artist_rating = UsersArtistRating.first( :conditions => ["artist_id = ? and user_id = ?", sim_artist.artist2_id, @user_id])
+           if sim_artist_rating
+            if sim_artist_rating.rating > 5
+              temp_rating = (sim_artist_rating.rating - 5) * 4
+            else
+              temp_rating = sim_artist_rating.rating * -4
+            end
+            if rating2 = 0
+              rating2 = temp_rating
+              best_similar_artist = sim_artist.artist2_id
+            elsif temp_rating > rating2
+              rating2 = temp_rating
+              best_similar_artist = sim_artist.artist2_id
+            end
+           end
+        end
+        sim_artists = SimilarArtist.find_all_by_artist2_id(concert.artist_id)
+        for sim_artist in sim_artists
+           sim_artist_rating = UsersArtistRating.first( :conditions => ["artist_id = ? and user_id = ?", sim_artist.artist1_id, @user_id])
+           if sim_artist_rating
+            if sim_artist_rating.rating > 5
+              temp_rating = (sim_artist_rating.rating - 5) * 4
+            else
+              temp_rating = sim_artist_rating.rating * -4
+            end
+            if rating2 = 0
+              rating2 = temp_rating
+              best_similar_artist = sim_artist.artist1_id
+            elsif temp_rating > rating2
+              rating2 = temp_rating
+              best_similar_artist = sim_artist.artist1_id
+            end
+           end
         end
       end
 
@@ -140,7 +179,12 @@ class RecommendationsController < ApplicationController
         end
       elsif rating2 > rating3
         #the user's artist rating is the best explanation
+        #check if this was for the artist or a similar artist
+        if best_similar_artist == 0
           explanation = explanation + "you like " + concert_artist.name + "."
+        else
+          explanation = explanation + "you like a similar/related artist, " + Artist.find(best_similar_artist).name + "."
+        end
       else
         #the genre was the best explanation
         explanation = explanation + "you like " + concert_artist.genre + " music."

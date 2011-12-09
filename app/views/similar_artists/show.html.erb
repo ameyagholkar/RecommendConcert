@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Artist1:</b>
+  <%= @similar_artist.artist1_id %>
+</p>
+
+<p>
+  <b>Artist2:</b>
+  <%= @similar_artist.artist2_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_similar_artist_path(@similar_artist) %> |
+<%= link_to 'Back', similar_artists_path %>
