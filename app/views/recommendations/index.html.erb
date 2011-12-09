@@ -3,10 +3,11 @@
 <table cellspacing="50">
 <% i = 1 %>
 <% @recommendations.each do |recommendation| %>
-  <tr>
+  <tr class="recommendation">
     <td><%= i %>.</td>
     <% @concert = get_concert(recommendation.concert_id) %>
     <td><table>
+      <tr><td><%= image_tag(Artist.find(@concert.artist_id).image) %></td></tr>
       <tr><td><%= (Artist.find(@concert.artist_id)).name %> Live in Concert</td></tr>
       <tr><td>
         <table>
