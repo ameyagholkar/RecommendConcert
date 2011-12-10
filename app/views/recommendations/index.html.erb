@@ -1,60 +1,68 @@
 <% if session[:id]%>
 <h1>Recommendations for <%= display_username(session[:id]) %></h1>
+<%= link_to "Take survey again", :controller => :survey, :action => :index, :survey_again => '1' %>
 
 <% i = 1 %>
 <% @recommendations.each do |recommendation| %>
     <table class="recommendation">
-    <td><%= i %>. </td>
-    <% @concert = get_concert(recommendation.concert_id) %>
-    <td><table>
-      <tr><td><%= image_tag(Artist.find(@concert.artist_id).image) %></td></tr>
-      <tr><td><%= (Artist.find(@concert.artist_id)).name %> Live in Concert</td></tr>
-      <tr>  <td>Recommendation Rating:
-      <% if recommendation.rating > 25 %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/stars.gif") %>
-      <% elsif recommendation.rating > 18 and recommendation.rating < 25 %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/blankbigstar.gif") %>
-      <% elsif recommendation.rating > 8 and recommendation.rating < 18 %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/blankbigstar.gif") %>
-          <%=  image_tag("/images/blankbigstar.gif") %>
-      <% else %>
-          <%=  image_tag("/images/stars.gif") %>
-          <%=  image_tag("/images/blankbigstar.gif") %>
-          <%=  image_tag("/images/blankbigstar.gif") %>
-          <%=  image_tag("/images/blankbigstar.gif") %>
-      <%  end %>
-        </td>
-     </tr>
-      <tr><td>
-        <table>
-          <tr><td>Venue:</td><td><%= (Venue.find(@concert.venue_id)).name %></td></tr>
-          <tr><td></td><td><%= (Venue.find(@concert.venue_id)).address %></td></tr>
-        </table>
-      </td></tr>
-      <tr><td>Time: <%= (@concert.start_time) %></td></tr>
-      <tr><td>Price Range: $<%= @concert.min_price %> - $<%= @concert.max_price %></td></tr>
-      <tr><td><%= (Artist.find(@concert.artist_id)).name %>'s Rating:
-        <% (1..(Artist.find(@concert.artist_id)).rating).each do  %>
-              <%= image_tag('/images/smallstar.gif') %>
-        <% end %>
-        <% (1..(10-(Artist.find(@concert.artist_id)).rating)).each do  %>
-              <%= image_tag('/images/blankstar.gif') %>
-        <% end %></td></tr>
+      <td><%= i %>. </td>
+      <% @concert = get_concert(recommendation.concert_id) %>
+      <td class="details"><table>
+        <tr>
+          <td><%= image_tag(Artist.find(@concert.artist_id).image) %></td><!--</tr>-->
+        <!--<tr>-->
+            <td><table>
+              <tr><td class="artistname"><%= (Artist.find(@concert.artist_id)).name %> Live in Concert</td></tr><!--</tr>-->
+              <tr>
+                <td>Recommendation Rating:
+                  <% if recommendation.rating > 25 %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/stars.gif") %>
+                  <% elsif recommendation.rating > 18 and recommendation.rating < 25 %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/blankbigstar.gif") %>
+                  <% elsif recommendation.rating > 8 and recommendation.rating < 18 %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/blankbigstar.gif") %>
+                    <%=  image_tag("/images/blankbigstar.gif") %>
+                  <% else %>
+                    <%=  image_tag("/images/stars.gif") %>
+                    <%=  image_tag("/images/blankbigstar.gif") %>
+                    <%=  image_tag("/images/blankbigstar.gif") %>
+                    <%=  image_tag("/images/blankbigstar.gif") %>
+                  <%  end %>
+                </td>
+              </tr>
+              <tr><td>
+                <table>
+                  <tr><td>Venue:</td><td><%= (Venue.find(@concert.venue_id)).name %></td></tr>
+                  <tr><td></td><td><%= (Venue.find(@concert.venue_id)).address %></td></tr>
+                </table>
+              </td></tr>
+              <tr><td>Time: <%= (@concert.start_time) %></td></tr>
+              <tr><td>Price Range: $<%= @concert.min_price %> - $<%= @concert.max_price %></td></tr>
+              <tr><td><%= (Artist.find(@concert.artist_id)).name %>'s Rating:
+                <% (1..(Artist.find(@concert.artist_id)).rating).each do  %>
+                  <%= image_tag('/images/smallstar.gif') %>
+                <% end %>
+                <% (1..(10-(Artist.find(@concert.artist_id)).rating)).each do  %>
+                  <%= image_tag('/images/blankstar.gif') %>
+                <% end %></td></tr>
+            </table></td>
+        </tr>
       </table></td>
-    <td><%= recommendation.explanation %> </td>
-   </table>
-  <% i=i+1 %>
+      <td class = "explanation"><%= recommendation.explanation %> </td>
+    </table>
+    <% i=i+1 %>
 <% end %>
 <% else %>
    <h1>You are not logged in !</h1>
 <% end %>
 <br />
 
+<a href="javascript:window.history.back()">Back</a>
