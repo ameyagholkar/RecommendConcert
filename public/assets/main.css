@@ -1,0 +1,127 @@
+body { background-color: #f5f5f5; color: #333; font-family: "Verdana";}
+
+body, p, ol, ul {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  word-wrap: break-word;
+
+}
+
+.mainTable {
+    width: 99%;
+}
+
+.mainTableHolder {
+    border: 1px solid silver;
+}
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: blue; }
+a:visited { color: green; }
+a:hover { color: #fff; background-color:#000; }
+
+tr.tableHeader th {
+  background-color: #adcef0;
+  border-bottom: 2px solid #4682b4;
+  border-radius: 2px;
+}
+
+textarea {
+    width: 95%;
+    margin-left: 10px;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#banner{
+    background-color: #87cefa;
+    border-bottom: 1px solid gray;
+}
+
+#main{
+    padding-top: 75px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.page_title a { color: white; text-decoration: none; }
+.page_title a:visited { color: white; text-decoration: none }
+.page_title a:hover { color: #fff; background-color:#87cefa; text-decoration: none }
+
+.page_title{
+    color: white;
+    text-align: center;
+    background-color: #87cefa;
+    display: block;
+    padding-top: 15px;
+}
+
+.recommendation {
+    font-size: 15px;
+    width: 99%;
+    border: solid black 1px;
+    background-color: #d1d3f0;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    padding-left: 0.5%;
+    margin-right: 1%;
+}
+
+.flash {
+    background-color: yellow;
+    color: red;
+    margin-top: 5px;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    border: solid red;
+}
+
+
+.borderedBox {
+    border: 1px solid silver; padding-left: 20px; padding-right: 10px;
+}
+
+.replyControls td {
+    border-bottom: solid silver 1px;
+}
