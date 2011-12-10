@@ -19,6 +19,9 @@ end
 gem 'jquery-rails'
 
 gem 'execjs'
+
+gem 'pg'
+
 group :production do
   gem 'therubyracer-heroku'
 end
