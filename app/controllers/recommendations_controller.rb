@@ -123,7 +123,7 @@ class RecommendationsController < ApplicationController
             else
               temp_rating = sim_artist_rating.rating * -4
             end
-            if rating2 = 0
+            if rating2 == 0
               rating2 = temp_rating
               best_similar_artist = sim_artist.artist2_id
             elsif temp_rating > rating2
@@ -141,7 +141,7 @@ class RecommendationsController < ApplicationController
             else
               temp_rating = sim_artist_rating.rating * -4
             end
-            if rating2 = 0
+            if rating2 == 0
               rating2 = temp_rating
               best_similar_artist = sim_artist.artist1_id
             elsif temp_rating > rating2

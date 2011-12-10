@@ -1,4 +1,5 @@
 <h1>Recommendations for <%= display_username(session[:id]) %></h1>
+<%= link_to "Take survey again", :controller => :survey, :action => :index, :survey_again => '1' %>
 
 <% i = 1 %>
 <% @recommendations.each do |recommendation| %>
@@ -55,3 +56,4 @@
 
 <br />
 
+<a href="javascript:window.history.back()">Back</a>

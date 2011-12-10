@@ -63,6 +63,7 @@ div.field, div.actions {
 
 .recommendation {
     font-size: 15px;
+    font-weight: bold;
     width: 99%;
     border: solid black 1px;
     background-color: #d1d3f0;
