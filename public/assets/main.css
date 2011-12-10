@@ -73,6 +73,17 @@ div.field, div.actions {
     margin-right: 1%;
 }
 
+.recommendation .explanation {
+    width: 40%;
+}
+
+.recommendation .details {
+    width: 65%;
+}
+
+.recommendation td tr td table tr .artistname {
+    font-size: 25px;
+}
 
 .borderedBox {
     border: 1px solid silver; padding-left: 20px; padding-right: 10px;
