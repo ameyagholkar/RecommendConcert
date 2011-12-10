@@ -1,3 +1,4 @@
+<% if session[:id]%>
 <h1>Recommendations for <%= display_username(session[:id]) %></h1>
 
 <% i = 1 %>
@@ -52,6 +53,8 @@
    </table>
   <% i=i+1 %>
 <% end %>
-
+<% else %>
+   <h1>You are not logged in !</h1>
+<% end %>
 <br />
 
